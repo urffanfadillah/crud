@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}CRUD | Delete{% endblock title %}
+
+{% block content %}
+
+<div class="alert alert-danger" role="alert">
+    <form method="post">{% csrf_token %}
+        <p class="lead">Kamu yakin ingin hapus {{ object.nama_barang }} ?</p>
+        <input type="submit" value="Oke" class="btn btn-outline-danger">
+    </form>
+</div>
+
+{% endblock content %}

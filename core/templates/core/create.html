@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}CRUD | Create{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">Create</h1>
+
+    {% load widget_tweaks %}
+    <form class="form-group" enctype="multipart/form-data" method="post">{% csrf_token %}
+        {% render_field form.nama_barang placeholder="Nama Barang" class+="form-control col-md-6 mb-2" %}
+        {% render_field form.jumlah_barang placeholder="Jumlah Barang" class+="form-control col-md-6 mb-2" %}
+        {% render_field form.gambar_barang class+="mb-5" class+="btn btn-primary" %} <br>
+        <button type="submit" class="btn btn-success">Kirim</button>
+    </form>
+
+</div>
+
+{% endblock content %}

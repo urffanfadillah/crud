@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Aplikasi CRUD{% endblock title %}
+
+{% block content %}
+<div class="container mt-4 p-2">
+    <h1 class="text-center">Aplikasi CRUD Sederhana</h1>
+    <a href="{% url 'core:create' %}" class="btn btn-outline-primary m-4">Buat Data Barang</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Gambar</th>
+                <th scope="col">Nama Barang</th>
+                <th scope="col">Jumlah Barang</th>
+                <th scope="col">Tanggal Barang</th>
+                <th scope="col" colspan="2" class="text-center">Opsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instance in object_list %}
+            <tr>
+                <td>
+                    <img src="{{ instance.gambar_barang.url }}" style="width: 150px; height: 150px; object-fit: cover;">
+                </td>
+                <td><b>{{ instance.nama_barang }}</b></td>
+                <td>{{ instance.jumlah_barang }}</td>
+                <td>{{ instance.tanggal_barang }}</td>
+                <!-- tombol opsi -->
+                <td><a class="btn btn-warning" href="{% url 'core:update' instance.id %}">Sunting</a></td>
+                <td><a class="btn btn-danger" href="{% url 'core:delete' instance.id %}">Hapus</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
